@@ -9,7 +9,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(700, 2400);
+  createCanvas(windowWidth, windowHeight);
   background(220);
   colorMode(HSB, 360, 100, 100, 255);
   textSize(20);
