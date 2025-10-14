@@ -1,28 +1,35 @@
 // categories and their colors
 let categories = {
-  "A": "#ff595e",
-  "B": "#1982c4",
-  "C": "#8ac926",
-  "D": "#ffca3a"
+  "A": "#FF9FA2",
+  "B": "#5DBFD3",
+  "C": "#45BBAC",
+  "D": "#F58541"
 };
 
 // particle class
 class Particle {
-  constructor(label, category) {
-    this.x = random(0, width);
-    this.y = random(0, height);
-    this.r = random(6, 10);
-    this.category = category;
-    this.label = label;
-    this.xSpeed = random(-1, 1);
-    this.ySpeed = random(-1, 1);
-  }
+ constructor(label, category) {
+  this.x = random(0, width);
+  this.y = random(0, height);
+  this.r = 5; //all particles same size
+  this.category = category;
+  this.label = label;
+  this.xSpeed = random(-0.5, 0.5);
+  this.ySpeed = random(-0.5, 0.5);
+  this.clicked = false; // new property
+}
 
-  createParticle() {
+
+ createParticle() {
+  if (this.clicked) {
+    stroke('yellow'); 
+    strokeWeight(3);
+  } else {
     noStroke();
-    fill(categories[this.category]);
-    circle(this.x, this.y, this.r * 2);
   }
+  fill(categories[this.category]);
+  circle(this.x, this.y, this.r * 2);
+}
 
   moveParticle() {
    this.x += this.xSpeed;
@@ -37,8 +44,8 @@ class Particle {
     particles.forEach(element => {
       let dis = dist(this.x, this.y, element.x, element.y);
       if (dis < 200) {
-        stroke('rgba(255,255,255,0.2)');
-        strokeWeight(1);
+        stroke('#413F3F');
+        strokeWeight(0.5);
         line(this.x, this.y, element.x, element.y);
       }
     });
@@ -49,7 +56,7 @@ class Particle {
   }
 
   showTooltip() {
-    fill(255);
+    fill(0);
     noStroke(0);
     textSize(14);
     textAlign(LEFT, BOTTOM);
@@ -85,7 +92,7 @@ function setup() {
 }
 
 function draw() {
-  background('#0f0f0f');
+  background('#FFFFFF');
 
   // filter visible particles
   let visibleParticles = particles.filter(p => currentFilter === "All" || p.category === currentFilter);
@@ -108,7 +115,7 @@ function mousePressed() {
       console.log(`Clicked ${p.label} (Category: ${p.category})`);
       p.r = 12;
     } else {
-      p.r = random(2, 10);
+      p.r = 5
     }
   }
 }
