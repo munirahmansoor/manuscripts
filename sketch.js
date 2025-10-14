@@ -53,6 +53,7 @@ class Particle {
     noStroke(0);
     textSize(14);
     textAlign(LEFT, BOTTOM);
+    textFont('Courier New');
     text(this.label + " (" + this.category + ")", this.x + 5, this.y - 10);
   }
 }
