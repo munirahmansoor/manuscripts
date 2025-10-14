@@ -84,7 +84,7 @@ function setup() {
   btnAll.mousePressed(() => currentFilter = "All");
 
   // create particles
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 100; i++) {
     let cat = random(cats);
     let label = "Point " + (i + 1);
     particles.push(new Particle(label, cat));
@@ -92,7 +92,7 @@ function setup() {
 }
 
 function draw() {
-  background('#FFFFFF');
+  background('#000');
 
   // filter visible particles
   let visibleParticles = particles.filter(p => currentFilter === "All" || p.category === currentFilter);
