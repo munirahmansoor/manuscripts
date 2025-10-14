@@ -11,7 +11,7 @@ class Particle {
  constructor(label, category) {
   this.x = random(0, width);
   this.y = random(0, height);
-  this.r = 10; //all particles same size
+  this.r = 6; //all particles same size
   this.category = category;
   this.label = label;
   this.xSpeed = random(-0.5, 0.5);
@@ -56,7 +56,7 @@ class Particle {
   }
 
   showTooltip() {
-    fill(0);
+    fill(255);
     noStroke(0);
     textSize(16);
     textAlign(LEFT, BOTTOM);
@@ -113,9 +113,9 @@ function mousePressed() {
   for (let p of particles) {
     if (p.isHovered(mouseX, mouseY)) {
       console.log(`Clicked ${p.label} (Category: ${p.category})`);
-      p.r = 18;
+      p.r = 16;
     } else {
-      p.r = 10
+      p.r = 6
     }
   }
 }
